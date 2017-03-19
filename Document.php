@@ -1,5 +1,22 @@
 <?php
+namespace app;
+
+use app\core\Model;
+use app\query\DocumentQuery;
+use app\exceptions\DocumentException;
+
+
+/**
+ * Class User
+ * @method DocumentQuery query()
+ *
+ * @package app
+ */
 class Document extends Model{
+    protected $queryClass = DocumentQuery::class;
+
+    public static $table = 'document';
+
     /** @var  User */
     private $user;
 
@@ -9,16 +26,18 @@ class Document extends Model{
     public function init($name, User $user)
     {
         if (strlen($name) > 5) {
-            throw new Exception('Название документа должно быть более 5 символов');
+            throw new DocumentException('Название документа должно быть более 5 символов');
         }
 
         $this->user = $user;
         $this->name = $name;
     }
 
-    public function getAllDocuments()
+    /**
+     * @return array
+     */
+    public static function getAllDocuments()
     {
-        return $this->query->allDocuments();
+        return static::query()->allDocuments();
     }
-
 }
