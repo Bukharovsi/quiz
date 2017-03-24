@@ -13,6 +13,4 @@ do just the first step in refactoring. Don't fix everything.
 Also, if you think that something else must be refactored further,
 put your ideas into the description of the pull request.
 
-[Apply here](http://www.teamed.io/join.html).
-
 Thanks!
